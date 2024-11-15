@@ -1,0 +1,24 @@
+type Employee {
+  id: ID!
+  name: String!
+  age: Int!
+  class: String!
+  subjects: [String!]!
+  attendance: Int!
+}
+
+type Query {
+  listEmployees(filter: EmployeeFilterInput, page: Int, limit: Int, sortBy: String, order: String): [Employee]
+  getEmployee(id: ID!): Employee
+}
+
+input EmployeeFilterInput {
+  name: String
+  age: Int
+  class: String
+}
+
+type Mutation {
+  addEmployee(name: String!, age: Int!, class: String!, subjects: [String!]!, attendance: Int!): Employee
+  updateEmployee(id: ID!, name: String, age: Int, class: String, subjects: [String!], attendance: Int): Employee
+}
